@@ -9,9 +9,15 @@ const connection = new Connection("https://api.devnet.solana.com", commitment);
 (async () => {
     try {
         // Create mint
-        // const mint = ???
-        // console.log(`You've created a new mint account:\n\n${mint.toBase58()}\n\nSave this address so you can use it to mint SPL tokens!`)
-    } catch(error) {
+        const mint = await createMint(
+            connection,
+            keypair,
+            keypair.publicKey,
+            null,
+            6
+        );
+        console.log(`You've created a new mint account:\n\n${mint.toBase58()}\n\nSave this address so you can use it to mint SPL tokens!`)
+    } catch (error) {
         console.log(`Oops, something went wrong: ${error}`)
     }
 })()
